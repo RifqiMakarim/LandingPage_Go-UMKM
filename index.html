@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GO-UMKM - Pemberdayaan UMKM Hijau & Investasi Berdampak</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,6 +15,32 @@
     <style>
       body {
         font-family: "Poppins", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .fly-in {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fly-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .btn-hover-grow {
+        transition: transform 0.2s ease-in-out;
+      }
+      .btn-hover-grow:hover {
+        transform: scale(1.05);
+      }
+      @media (min-width: 768px) {
+        .nav-link-desktop {
+          transition: transform 0.2s ease-in-out;
+        }
+        .nav-link-desktop:hover {
+          transform: scale(1.1);
+        }
       }
     </style>
   </head>
@@ -26,25 +53,35 @@
           </div>
 
           <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
+            <div class="ml-10 flex items-baseline space-x-2">
+              <a
+                href="#tentang-kami"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Tentang Kami</a
+              >
               <a
                 href="#fitur"
-                class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
                 >Fitur</a
               >
               <a
-                href="#untuk-umkm"
-                class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
-                >Untuk UMKM</a
+                href="#tantangan"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Tantangan</a
               >
               <a
-                href="#untuk-investor"
-                class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
-                >Untuk Investor</a
+                href="#solusi"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Solusi</a
+              >
+              <a
+                href="#testimoni"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Testimoni</a
               >
               <a
                 href="#faq"
-                class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
+                class="nav-link-desktop text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium"
                 >FAQ</a
               >
             </div>
@@ -53,7 +90,7 @@
           <div class="hidden md:block">
             <a
               href="#"
-              class="bg-green-600 text-white font-semibold hover:bg-green-700 transition duration-300 px-5 py-2 rounded-full text-sm"
+              class="nav-link-desktop bg-green-600 text-white font-semibold hover:bg-green-700 px-5 py-2 rounded-full text-sm"
             >
               Mulai Sekarang
             </a>
@@ -61,6 +98,7 @@
 
           <div class="-mr-2 flex md:hidden">
             <button
+              id="mobile-menu-button"
               type="button"
               class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-green-600 hover:bg-gray-200"
             >
@@ -83,31 +121,42 @@
           </div>
         </div>
       </div>
-      <div class="hidden md:hidden">
+
+      <div id="mobile-menu" class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
+            href="#tentang-kami"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Tentang Kami</a
+          >
+          <a
             href="#fitur"
-            class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >Fitur</a
           >
           <a
-            href="#untuk-umkm"
-            class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
-            >Untuk UMKM</a
+            href="#tantangan"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Tantangan</a
           >
           <a
-            href="#untuk-investor"
-            class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
-            >Untuk Investor</a
+            href="#solusi"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Solusi</a
+          >
+          <a
+            href="#testimoni"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Testimoni</a
           >
           <a
             href="#faq"
-            class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
+            class="text-gray-600 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >FAQ</a
           >
           <a
             href="#"
-            class="bg-green-600 text-white text-center font-semibold hover:bg-green-700 transition duration-300 block px-5 py-2 rounded-full text-base"
+            class="bg-green-600 text-white text-center font-semibold hover:bg-green-700 block px-5 py-2 rounded-xl text-base mt-2"
           >
             Mulai Sekarang
           </a>
@@ -119,7 +168,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="text-center md:text-left">
             <h1
-              class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+              class="fly-in text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
             >
               <span class="block">Memberdayakan UMKM Hijau,</span>
               <span class="block text-green-600"
@@ -127,15 +176,19 @@
               >
             </h1>
             <p
-              class="mt-5 max-w-md mx-auto text-lg text-gray-600 sm:text-xl md:mt-6 md:max-w-2xl md:mx-0"
+              class="fly-in mt-5 max-w-md mx-auto text-lg text-gray-600 sm:text-xl md:mt-6 md:max-w-2xl md:mx-0"
+              style="transition-delay: 100ms"
             >
               Platform fintech yang menghubungkan UMKM ramah lingkungan dengan
               investor untuk pertumbuhan bisnis yang berkelanjutan.
             </p>
-            <div class="mt-8 flex justify-center md:justify-start space-x-4">
+            <div
+              class="fly-in mt-8 flex justify-center md:justify-start space-x-4"
+              style="transition-delay: 200ms"
+            >
               <a
                 href="#"
-                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700"
+                class="btn-hover-grow inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700"
               >
                 <svg
                   class="w-6 h-6 mr-2"
@@ -160,7 +213,7 @@
               </a>
               <a
                 href="#"
-                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700"
+                class="btn-hover-grow inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-green-600 hover:bg-green-700"
               >
                 <svg
                   class="w-6 h-6 mr-2"
@@ -203,7 +256,7 @@
             </div>
           </div>
 
-          <div class="mt-12 md:mt-0">
+          <div class="fly-in mt-12 md:mt-0" style="transition-delay: 300ms">
             <div
               class="bg-gray-200 h-96 rounded-lg flex items-center justify-center"
             >
@@ -214,20 +267,142 @@
       </div>
     </main>
 
-    <section class="bg-white py-20 sm:py-24">
+    <!-- Tentang Kami -->
+    <section id="tentang-kami" class="bg-white py-20 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="fly-in">
+            <div
+              class="bg-gray-200 w-full rounded-2xl shadow-lg flex items-center justify-center"
+            >
+              <img
+                class="w-full rounded-2xl"
+                src="img/Visi UMKM Hijau.png"
+                alt="Visi Hijau dengan Pertumbuhan Ekonomi"
+              />
+            </div>
+          </div>
+
+          <div class="fly-in" style="transition-delay: 100ms">
+            <span class="font-bold text-green-600 uppercase tracking-wide"
+              >Tentang Kami</span
+            >
+            <h2 class="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              Menjembatani Visi Hijau dengan Pertumbuhan Ekonomi
+            </h2>
+            <p class="mt-4 text-md text-gray-600 text-justify">
+              GO-UMKM terinspirasi oleh gagasan bahwa kemajuan ekonomi dapat
+              berjalan seiring dengan upaya pelestarian lingkungan. Kami
+              menyadari masih banyak UMKM berorientasi hijau yang memiliki
+              potensi besar, namun terhambat oleh keterbatasan akses terhadap
+              pendanaan dan teknologi. Di sisi lain, muncul gelombang investor
+              yang ingin menanamkan modal pada usaha yang tidak hanya
+              menguntungkan, tetapi juga memberikan kontribusi positif bagi
+              masyarakat dan lingkungan.
+            </p>
+            <p class="mt-4 text-md text-gray-600 text-justify">
+              Untuk itu, kami menghadirkan GO-UMKM sebagai platform e-Commerce
+              yang menjadi penghubung antara UMKM ramah lingkungan dan investor
+              berdampak, sekaligus menyediakan fitur jual beli produk hijau bagi
+              konsumen. Platform ini membangun ekosistem digital yang memperkuat
+              kolaborasi demi terciptanya perubahan yang inklusif dan
+              berkelanjutan.
+            </p>
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg
+                    class="h-6 w-6 text-green-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base text-gray-700">
+                  <span class="font-semibold">Pemberdayaan ,</span> Memberikan
+                  UMKM alat dan modal untuk berkembang secara berkelanjutan.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg
+                    class="h-6 w-6 text-green-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base text-gray-700">
+                  <span class="font-semibold">Inovasi ,</span> Menggunakan
+                  teknologi untuk menciptakan solusi finansial yang inklusif dan
+                  transparan.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg
+                    class="h-6 w-6 text-green-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base text-gray-700">
+                  <span class="font-semibold">Dampak ,</span> Fokus pada
+                  investasi yang memberikan imbal hasil finansial sekaligus
+                  dampak sosial dan lingkungan yang terukur.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tantangan" class="bg-white py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Tantangan UMKM di Era Digital
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             GO-UMKM hadir untuk menjawab tiga masalah utama yang sering dihadapi
             para pelaku usaha.
           </p>
         </div>
 
         <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div class="text-center p-6 border border-gray-200 rounded-lg">
+          <div
+            class="fly-in text-center p-6 border border-gray-200 rounded-lg"
+            style="transition-delay: 200ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mx-auto"
             >
@@ -255,7 +430,10 @@
             </p>
           </div>
 
-          <div class="text-center p-6 border border-gray-200 rounded-lg">
+          <div
+            class="fly-in text-center p-6 border border-gray-200 rounded-lg"
+            style="transition-delay: 300ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 mx-auto"
             >
@@ -283,7 +461,10 @@
             </p>
           </div>
 
-          <div class="text-center p-6 border border-gray-200 rounded-lg">
+          <div
+            class="fly-in text-center p-6 border border-gray-200 rounded-lg"
+            style="transition-delay: 400ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mx-auto"
             >
@@ -298,7 +479,7 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c.507 0 1.01-.07 1.5-.205M12 21c-.507 0-1.01-.07-1.5-.205M12 3a9.004 9.004 0 0 0-8.716 6.747M12 3a9.004 9.004 0 0 1 8.716 6.747M12 3c.507 0 1.01.07 1.5.205M12 3c-.507 0-1.01.07-1.5-.205M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c.507 0 1.01-.07 1.5-.205M12 21c-.507 0-1.01-.07-1.5-.205M12 3a9.004 9.004 0 0 0-8.716 6.747M12 3a9.004 9.004 0 0 1 8.716 6.747M12 3c.507 0 1.01.07 1.5.205M12 3c-.507 0-1.01-.07-1.5-.205M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                 />
               </svg>
             </div>
@@ -314,13 +495,16 @@
       </div>
     </section>
 
-    <section class="bg-slate-50 py-20 sm:py-24">
+    <section id="solusi" class="bg-slate-50 py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Solusi untuk Pertumbuhan Bersama
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             Baik Anda pelaku usaha maupun investor, GO-UMKM menyediakan platform
             untuk mencapai tujuan Anda.
           </p>
@@ -328,7 +512,8 @@
 
         <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div
-            class="bg-green-50 border border-green-200 rounded-xl p-8 flex flex-col"
+            class="fly-in bg-green-50 border border-green-200 rounded-xl p-8 flex flex-col"
+            style="transition-delay: 200ms"
           >
             <div class="flex-shrink-0">
               <span
@@ -435,7 +620,8 @@
           </div>
 
           <div
-            class="bg-blue-50 border border-blue-200 rounded-xl p-8 flex flex-col"
+            class="fly-in bg-blue-50 border border-blue-200 rounded-xl p-8 flex flex-col"
+            style="transition-delay: 300ms"
           >
             <div class="flex-shrink-0">
               <span
@@ -544,19 +730,22 @@
       </div>
     </section>
 
-    <section class="bg-white py-20 sm:py-24">
+    <section id="fitur" class="bg-white py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Fitur Unggulan GO-UMKM
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             Temukan bagaimana platform kami bekerja untuk menciptakan ekosistem
             yang saling menguntungkan.
           </p>
         </div>
 
-        <div class="mt-20">
+        <div class="fly-in mt-20" style="transition-delay: 200ms">
           <div class="text-center">
             <h3 class="text-2xl font-bold text-green-600">GreenFund</h3>
             <p class="mt-2 text-xl font-semibold text-gray-800">
@@ -642,7 +831,7 @@
         </div>
 
         <div class="mt-28 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div class="order-2 md:order-1">
+          <div class="fly-in order-2 md:order-1">
             <div class="bg-slate-100 p-4 rounded-xl">
               <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="h-48 bg-gray-200 flex items-center justify-center">
@@ -667,7 +856,10 @@
             </div>
           </div>
 
-          <div class="order-1 md:order-2">
+          <div
+            class="fly-in order-1 md:order-2"
+            style="transition-delay: 100ms"
+          >
             <h3 class="text-2xl font-bold text-blue-600">EcoStore</h3>
             <p class="mt-2 text-xl font-semibold text-gray-800">
               Etalase Produk Ramah Lingkungan
@@ -701,8 +893,8 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12">
+          <div class="fly-in">
             <h3 class="text-2xl font-bold text-purple-600">ImpactVest</h3>
             <p class="mt-2 text-xl font-semibold text-gray-800">
               Investasi Berdampak dengan Imbal Hasil
@@ -774,7 +966,10 @@
             </ul>
           </div>
 
-          <div class="flex items-center justify-center">
+          <div
+            class="fly-in flex items-center justify-center mt-6"
+            style="transition-delay: 100ms"
+          >
             <div
               class="bg-gray-200 w-full h-96 rounded-2xl shadow-lg flex items-center justify-center p-8"
             >
@@ -792,17 +987,23 @@
     <section class="bg-slate-50 py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Prioritas Kami adalah Keamanan Anda
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             Kami menerapkan standar keamanan berlapis untuk melindungi setiap
             transaksi dan data pengguna.
           </p>
         </div>
 
         <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <div
+            class="fly-in bg-white p-6 rounded-lg border border-gray-200"
+            style="transition-delay: 200ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
             >
@@ -830,7 +1031,10 @@
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <div
+            class="fly-in bg-white p-6 rounded-lg border border-gray-200"
+            style="transition-delay: 300ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
             >
@@ -858,7 +1062,10 @@
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <div
+            class="fly-in bg-white p-6 rounded-lg border border-gray-200"
+            style="transition-delay: 400ms"
+          >
             <div
               class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
             >
@@ -885,108 +1092,30 @@
               mencegah penyalahgunaan.
             </p>
           </div>
-
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <div
-              class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
-            >
-              <svg
-                class="h-6 w-6 text-green-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V5.75A2.25 2.25 0 0 0 18 3.5H6A2.25 2.25 0 0 0 3.75 5.75v12.5A2.25 2.25 0 0 0 6 20.25Z"
-                />
-              </svg>
-            </div>
-            <h3 class="mt-5 text-lg font-semibold text-gray-900">
-              Dashboard Investor Transparan
-            </h3>
-            <p class="mt-2 text-base text-gray-600">
-              Investor dapat melacak alokasi dana, kemajuan bisnis, dan laporan
-              keuangan UMKM secara real-time.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <div
-              class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
-            >
-              <svg
-                class="h-6 w-6 text-green-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.321h5.367c.34 0 .47.452.206.66l-4.14 3.284a.563.563 0 0 0-.182.635l1.578 5.474a.563.563 0 0 1-.83.636l-4.52-3.14a.562.562 0 0 0-.642 0l-4.52 3.14a.562.562 0 0 1-.83-.636l1.578-5.474a.563.563 0 0 0-.182-.635l-4.14-3.284a.563.563 0 0 1 .206-.66h5.367a.563.563 0 0 0 .475-.321L11.48 3.5Z"
-                />
-              </svg>
-            </div>
-            <h3 class="mt-5 text-lg font-semibold text-gray-900">
-              Rating dan Ulasan
-            </h3>
-            <p class="mt-2 text-base text-gray-600">
-              Membangun akuntabilitas melalui sistem rating dan ulasan dari
-              investor untuk setiap UMKM yang didanai.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <div
-              class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100"
-            >
-              <svg
-                class="h-6 w-6 text-green-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.286Z"
-                />
-              </svg>
-            </div>
-            <h3 class="mt-5 text-lg font-semibold text-gray-900">
-              Sistem Anti-Penipuan
-            </h3>
-            <p class="mt-2 text-base text-gray-600">
-              Penerapan sanksi tegas dan blacklist bagi pihak yang terbukti
-              melakukan penipuan untuk menjaga integritas platform.
-            </p>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-white py-20 sm:py-24">
+    <section id="testimoni" class="bg-white py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Kisah Sukses dari Komunitas Kami
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             Lihat bagaimana GO-UMKM telah membantu mengubah bisnis dan cara
             berinvestasi.
           </p>
         </div>
 
         <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div class="bg-slate-50 border border-gray-200 rounded-xl p-8">
+          <div
+            class="fly-in bg-slate-50 border border-gray-200 rounded-xl p-8"
+            style="transition-delay: 200ms"
+          >
             <div class="relative">
               <svg
                 class="absolute top-0 left-0 h-16 w-16 text-gray-200 transform -translate-x-6 -translate-y-6"
@@ -1029,7 +1158,10 @@
             </footer>
           </div>
 
-          <div class="bg-slate-50 border border-gray-200 rounded-xl p-8">
+          <div
+            class="fly-in bg-slate-50 border border-gray-200 rounded-xl p-8"
+            style="transition-delay: 300ms"
+          >
             <div class="relative">
               <svg
                 class="absolute top-0 left-0 h-16 w-16 text-gray-200 transform -translate-x-6 -translate-y-6"
@@ -1073,19 +1205,25 @@
       </div>
     </section>
 
-    <section class="bg-slate-50 py-20 sm:py-24">
+    <section id="faq" class="bg-slate-50 py-20 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="fly-in text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Pertanyaan yang Sering Diajukan
           </h2>
-          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            class="fly-in mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            style="transition-delay: 100ms"
+          >
             Tidak menemukan jawaban Anda? Hubungi kami langsung melalui kontak
             di bawah.
           </p>
         </div>
 
-        <div class="mt-16 max-w-4xl mx-auto">
+        <div
+          class="fly-in mt-16 max-w-4xl mx-auto"
+          style="transition-delay: 200ms"
+        >
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-6">
             <div class="space-y-6">
               <h3 class="text-xl font-semibold text-gray-800">Untuk UMKM</h3>
@@ -1213,7 +1351,7 @@
     <section class="bg-white">
       <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div
-          class="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl shadow-xl overflow-hidden"
+          class="fly-in bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl shadow-xl overflow-hidden"
         >
           <div class="px-6 py-16 sm:px-16 sm:py-20 text-center">
             <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
@@ -1226,7 +1364,7 @@
             <div class="mt-8 flex justify-center space-x-4">
               <a
                 href="#"
-                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-black bg-opacity-20 hover:bg-opacity-30"
+                class="btn-hover-grow inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-black bg-opacity-20 hover:bg-opacity-30"
               >
                 <svg
                   class="w-6 h-6 mr-2"
@@ -1251,7 +1389,7 @@
               </a>
               <a
                 href="#"
-                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-black bg-opacity-20 hover:bg-opacity-30"
+                class="btn-hover-grow inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-black bg-opacity-20 hover:bg-opacity-30"
               >
                 <svg
                   class="w-6 h-6 mr-2"
@@ -1332,12 +1470,10 @@
             <ul class="mt-4 space-y-3">
               <li><a href="#fitur" class="hover:text-white">Fitur</a></li>
               <li>
-                <a href="#untuk-umkm" class="hover:text-white">Untuk UMKM</a>
+                <a href="#solusi" class="hover:text-white">Untuk UMKM</a>
               </li>
               <li>
-                <a href="#untuk-investor" class="hover:text-white"
-                  >Untuk Investor</a
-                >
+                <a href="#solusi" class="hover:text-white">Untuk Investor</a>
               </li>
               <li><a href="#faq" class="hover:text-white">FAQ</a></li>
             </ul>
