@@ -12,13 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          // Optional: hentikan pengamatan setelah elemen terlihat
           observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.1, // Picu animasi saat 10% elemen terlihat
+      threshold: 0.1, 
     }
   );
 
