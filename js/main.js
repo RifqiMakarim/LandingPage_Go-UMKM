@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   mobileMenuButton.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
-    
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     },
     {
-      threshold: 0.1, 
+      threshold: 0.1,
     }
   );
 
   flyInElements.forEach((element) => {
     observer.observe(element);
-  });
+  }); 
 });
